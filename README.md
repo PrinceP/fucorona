@@ -1,16 +1,28 @@
 # fucorona
 
-View them all
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+This is an analytics application for COVID-19. It contains maps, graph and table view for the reports.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+The data is taken from -  
+https://github.com/CSSEGISandData/COVID-19
+Data from Johns Hopkins CSSE. 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+![Screen1](flutter_01.png)
+
+![Screen2](flutter_02.png)
+
+![Screen3](flutter_03.png)
+
+![Screen4](flutter_04.png)
+
+![Screen5](flutter_05.png)
+
+![Screen6](flutter_06.png)
+
+![Screen7](flutter_07.png)
+
+
