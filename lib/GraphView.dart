@@ -88,25 +88,22 @@ class _GraphViewState extends State<GraphView> with AutomaticKeepAliveClientMixi
     final lengthOne = csvTable1.length;
     dataDate = csvTable1[0].sublist(4);
     lengthOfDate = dataDate.length;
-//    var basedate = new DateTime(2020,1,22);
-
-//    dataDate_.add(new DateFormat("yyyy-MMMM-d").format(basedate).toString());
-//
-//    for(int i=1;i<dataDate.length;i++){
-//      var newdate = new DateTime(basedate.year, basedate.month, basedate.day+i);
-//      dataDate_.add(new DateFormat("yyyy-MMMM-d").format(newdate).toString());
-//    }
-//
-//    print(dataDate_.length);
 
 
 
     for(int j=0; j < dataDate.length; j++){
       dataDeathNumberOneDate = 0;
       for(int i=1; i < lengthOne.toInt(); i++){
-        dataDeathNumberOneDate += int.parse(csvTable1[i][j+4]);
+        int curr_nu = int.tryParse(csvTable1[i][j+4]);
+        if(curr_nu != null){
+          dataDeathNumberOneDate += curr_nu;
+        }
       }
       dataDeathNumber.add(dataDeathNumberOneDate);
+    }
+    dataDeathNumberOneDate = dataDeathNumber.elementAt(dataDeathNumber.length - 1);
+    if(dataDeathNumberOneDate == 0){
+      dataDeathNumberOneDate = dataDeathNumber.elementAt(dataDeathNumber.length - 2);
     }
 
     final lengthTwo = csvTable2.length;
@@ -114,21 +111,35 @@ class _GraphViewState extends State<GraphView> with AutomaticKeepAliveClientMixi
     for(int j=0; j < dataDate.length; j++){
       dataConfirmedNumberOneDate = 0;
       for(int i=1; i < lengthTwo.toInt(); i++){
-        dataConfirmedNumberOneDate += int.parse(csvTable2[i][j+4]);
+        int curr_nu = int.tryParse(csvTable2[i][j+4]);
+        if(curr_nu != null){
+          dataConfirmedNumberOneDate += curr_nu;
+        }
       }
       dataConfirmedNumber.add(dataConfirmedNumberOneDate);
     }
+    dataConfirmedNumberOneDate = dataConfirmedNumber.elementAt(dataConfirmedNumber.length - 1);
+    if(dataConfirmedNumberOneDate == 0){
+      dataConfirmedNumberOneDate = dataConfirmedNumber.elementAt(dataConfirmedNumber.length - 2);
+    }
+
 
     final lengthThree = csvTable3.length;
 
     for(int j=0; j < dataDate.length; j++){
       dataRecoveredNumberOneDate = 0;
       for(int i=1; i < lengthThree.toInt(); i++){
-        dataRecoveredNumberOneDate += int.parse(csvTable3[i][j+4]);
+        int curr_nu = int.tryParse(csvTable3[i][j+4]);
+        if(curr_nu != null){
+          dataRecoveredNumberOneDate += curr_nu;
+        }
       }
       dataRecoveredNumber.add(dataRecoveredNumberOneDate);
     }
-
+    dataRecoveredNumberOneDate = dataRecoveredNumber.elementAt(dataRecoveredNumber.length - 1);
+    if(dataRecoveredNumberOneDate == 0){
+      dataRecoveredNumberOneDate = dataRecoveredNumber.elementAt(dataRecoveredNumber.length - 2);
+    }
 
     setState(() {
     });
@@ -147,23 +158,23 @@ class _GraphViewState extends State<GraphView> with AutomaticKeepAliveClientMixi
       _dir = (await getApplicationDocumentsDirectory()).path;
     }
 
+//
+//    if ( t_number == 1 && !await _hasToDownloadAssets("t1", _dir)) {
+//      print("Exists 1.csv");
+//      return;
+//    }
+//    if (t_number == 2 && !await _hasToDownloadAssets("t2", _dir)) {
+//      print("Exists 2.csv");
+//      return;
+//    }
+//    if (t_number == 3 && !await _hasToDownloadAssets("t3", _dir)) {
+//      print("Exists 3.csv");
+//      return;
+//    }
 
-    if ( t_number == 1 && !await _hasToDownloadAssets("t1", _dir)) {
-      print("Exists 1.csv");
-      return;
-    }
-    if (t_number == 2 && !await _hasToDownloadAssets("t2", _dir)) {
-      print("Exists 2.csv");
-      return;
-    }
-    if (t_number == 3 && !await _hasToDownloadAssets("t3", _dir)) {
-      print("Exists 3.csv");
-      return;
-    }
-
-//    await _hasToDownloadAssets("t1", _dir);
-//    await _hasToDownloadAssets("t2", _dir);
-//    await _hasToDownloadAssets("t3", _dir);
+    await _hasToDownloadAssets("t1", _dir);
+    await _hasToDownloadAssets("t2", _dir);
+    await _hasToDownloadAssets("t3", _dir);
 
     if(t_number == 1) {
       var zippedFile = await _downloadFile(
@@ -411,7 +422,7 @@ class _GraphViewState extends State<GraphView> with AutomaticKeepAliveClientMixi
                     var base = +new Date(2020, 1, 22);
                     var oneDay = 24 * 3600 * 1000;
                     var date = [];
-                    var length_of_date = 50;
+                    var length_of_date = 60;
                     for (var i = 1; i < length_of_date; i++) {
                         var now = new Date(base += oneDay);
                         date.push([now.getFullYear(), now.getMonth(), now.getDate()].join('/'));
