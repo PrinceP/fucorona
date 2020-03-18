@@ -11,18 +11,16 @@ https://github.com/CSSEGISandData/COVID-19
 Data from Johns Hopkins CSSE. 
 
 
-![Screen1](flutter_01.png)
-
-![Screen2](flutter_02.png)
-
-![Screen3](flutter_03.png)
-
-![Screen4](flutter_04.png)
-
-![Screen5](flutter_05.png)
-
-![Screen6](flutter_06.png)
-
-![Screen7](flutter_07.png)
+MapView |
+:-------------------------:|
+![](flutter_01.png)  
 
 
+GraphView             |  GraphView  |   GraphView
+:-------------------------:|:-------------------------:|:-------------------------:
+![](flutter_03.png)  |  ![](flutter_04.png) | ![](flutter_05.png) 
+
+
+TableView  |  TableView
+:-------------------------:|:-------------------------:
+![](flutter_06.png)  |  ![](flutter_07.png)
